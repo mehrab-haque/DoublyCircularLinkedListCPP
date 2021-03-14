@@ -82,7 +82,6 @@ void PillowGame :: endMusic(){
 			return;
 		}
 		this->remainingTime=linkedList->getCurrentNode()->getValue()->getResponseTime()-1;
-		cout<<"remaining time : "<<remainingTime<<endl;
 	}
 }
 
