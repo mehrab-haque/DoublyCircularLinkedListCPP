@@ -74,14 +74,15 @@ void PillowGame :: playTill(int time){
 
 void PillowGame :: endMusic(){
 	if(!isOver){
-		cout<<"Player "<<linkedList->getCurrentNode()->getValue()->getSerial()<<" has been eliminated at t="<<currentTime;
+		cout<<"Player "<<linkedList->getCurrentNode()->getValue()->getSerial()<<" has been eliminated at t="<<currentTime<<endl;
 		linkedList->deleteCurrentNode(this->forwardDirection);
 		if(linkedList->getSize()==1){
 			this->isOver=true;
-			cout<<"Game over : Player "<<linkedList->getCurrentNode()->getValue()->getSerial()<<" wins!!";
+			cout<<"Game over : Player "<<linkedList->getCurrentNode()->getValue()->getSerial()<<" wins!!"<<endl;
 			return;
 		}
 		this->remainingTime=linkedList->getCurrentNode()->getValue()->getResponseTime()-1;
+		cout<<"remaining time : "<<remainingTime<<endl;
 	}
 }
 
@@ -111,6 +112,7 @@ void PillowGame :: endGame(){
 				this->forwardDirection?linkedList->gotoNextNode():linkedList->gotoPreviousNode();
 			}
 		}
+		cout<<endl;
 	}
 }
 
