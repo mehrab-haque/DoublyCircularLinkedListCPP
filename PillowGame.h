@@ -85,26 +85,14 @@ void PillowGame :: endMusic(){
 	}
 }
 
-/*
-class PillowGame{
-	CircularDoublyLinkedList *linkedList;
-	int totalNPlayers;
-	int currentTime;
-	int remainingTime;
-	bool forwardDirection;
-	public:
-		PillowGame(int responseTimes[],int n);
-		void playTill(int time);
-		void endMusic();
-		void reverse();
-		void addPlayer(int responseTime);
-		void printCurrentPlayer();
-		void endGame();
-};
-*/
-
 void PillowGame :: reverse(){
 	this->forwardDirection=!this->forwardDirection;
+}
+
+void PillowGame :: addPlayer(int responseTime){
+	Player *player=new Player(++totalNPlayers,responseTime);
+	Node *node=new Node(player);
+	this->forwardDirection?linkedList->addPreviousNode(node):linkedList->addNextNode(node);
 }
 
 void PillowGame :: printCurrentPlayer(){
@@ -113,12 +101,15 @@ void PillowGame :: printCurrentPlayer(){
 }
 
 void PillowGame :: endGame(){
-	cout<<"Game over : Player "<<linkedList->getCurrentNode()->getValue()->getSerial()<<" is holding the pillow at t="<<currentTime<<", pillow passing sequence = Player ";
-	for(int i=0;i<linkedList->getSize();i++){
-		cout<<linkedList->getCurrentNode()->getValue()->getSerial();
-		if(i<linkedList->getSize()-1){
-			cout<<", ";
-			this->forwardDirection?linkedList->gotoNextNode():linkedList->gotoPreviousNode();
+	if(!isOver){
+		this->isOver=true;
+		cout<<"Game over : Player "<<linkedList->getCurrentNode()->getValue()->getSerial()<<" is holding the pillow at t="<<currentTime<<", pillow passing sequence = Player ";
+		for(int i=0;i<linkedList->getSize();i++){
+			cout<<linkedList->getCurrentNode()->getValue()->getSerial();
+			if(i<linkedList->getSize()-1){
+				cout<<", ";
+				this->forwardDirection?linkedList->gotoNextNode():linkedList->gotoPreviousNode();
+			}
 		}
 	}
 }
