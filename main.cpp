@@ -20,7 +20,7 @@ int main(){
 	for(int i=0;i<N;i++)
 		cin>>responseTimes[i];
 	
-	PillowGame *pillowGame=new PillowGame(responseTimes,3);
+	PillowGame *pillowGame=new PillowGame(responseTimes,N);
 	
 	string command;
 	getline(cin,command); //clear the buffer
