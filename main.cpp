@@ -12,7 +12,10 @@ using namespace std;
 
 int main(){
 	
-	Player *p1 = new Player(1,100);
+	int responseTimes[]={100,200,300};
+	PillowGame *pillowGame=new PillowGame(responseTimes,3);
+	
+	/*Player *p1 = new Player(1,100);
 	Player *p2 = new Player(2,200);
 	Player *p3 = new Player(3,300);
 	
@@ -65,7 +68,7 @@ int main(){
 	l->gotoPreviousNode();
 	
 	cout<<"size : "<<l->getSize()<<endl;
-	cout<<l->getCurrentNode()->getValue()->getSerial()<<endl<<endl;
+	cout<<l->getCurrentNode()->getValue()->getSerial()<<endl<<endl;*/
 	
 	return 0;
 }
