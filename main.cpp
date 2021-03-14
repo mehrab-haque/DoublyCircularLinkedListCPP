@@ -66,8 +66,5 @@ int main(){
 	    }
 	}
 	
-	
-	pillowGame->endGame();
-	
 	return 0;
 }
