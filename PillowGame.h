@@ -36,8 +36,9 @@ class PillowGame{
 //Function definitions
 PillowGame :: PillowGame(int responseTimes[],int n){
 	totalNPlayers=0;
-	currentTime=0;
-	remainingTime=responseTimes[0];
+	currentTime=1;
+	remainingTime=responseTimes[0]-1;
+	forwardDirection=true;
 	
 	//Initializing circular doubly linked list with the first node
 	Player *player=new Player(++totalNPlayers,responseTimes[0]);
@@ -55,27 +56,38 @@ PillowGame :: PillowGame(int responseTimes[],int n){
 	}
 	
 	linkedList->gotoNextNode(); //moving to next of the last node, that is the first node (circular)
-	
-	
-	//Test
-	cout<<"size : "<<linkedList->getSize()<<endl;
-	cout<<linkedList->getCurrentNode()->getValue()->getSerial()<<endl<<endl;
-	
-	linkedList->gotoNextNode();
-	cout<<"size : "<<linkedList->getSize()<<endl;
-	cout<<linkedList->getCurrentNode()->getValue()->getSerial()<<endl<<endl;
-	
-	linkedList->gotoNextNode();
-	cout<<"size : "<<linkedList->getSize()<<endl;
-	cout<<linkedList->getCurrentNode()->getValue()->getSerial()<<endl<<endl;
-	
-	linkedList->gotoNextNode();
-	cout<<"size : "<<linkedList->getSize()<<endl;
-	cout<<linkedList->getCurrentNode()->getValue()->getSerial()<<endl<<endl;
-	
-	linkedList->gotoNextNode();
-	cout<<"size : "<<linkedList->getSize()<<endl;
-	cout<<linkedList->getCurrentNode()->getValue()->getSerial()<<endl<<endl;
+}
+
+
+/*
+class PillowGame{
+	CircularDoublyLinkedList *linkedList;
+	int totalNPlayers;
+	int currentTime;
+	int remainingTime;
+	bool forwardDirection;
+	public:
+		PillowGame(int responseTimes[],int n);
+		void playTill(int time);
+		void endMusic();
+		void reverse();
+		void addPlayer(int responseTime);
+		void printCurrentPlayer();
+		void endGame();
+};
+*/
+void PillowGame :: playTill(int time){
+	while(currentTime+remainingTime<time){
+		currentTime+=remainingTime+1;
+		forwardDirection?linkedList->gotoNextNode():linkedList->gotoPreviousNode();
+		remainingTime=linkedList->getCurrentNode()->getValue()->getResponseTime()-1;
+	}
+	remainingTime=currentTime+remainingTime-time;
+	currentTime=time;
+}
+
+void PillowGame :: printCurrentPlayer(){
+	cout<<"Player "<<linkedList->getCurrentNode()->getValue()->getSerial()<<" is holding the pillow at t="<<currentTime<<endl;
 }
 
 
