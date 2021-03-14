@@ -81,7 +81,7 @@ void PillowGame :: endMusic(){
 			cout<<"Game over : Player "<<linkedList->getCurrentNode()->getValue()->getSerial()<<" wins!!"<<endl;
 			return;
 		}
-		this->remainingTime=linkedList->getCurrentNode()->getValue()->getResponseTime()-1;
+		this->remainingTime=linkedList->getCurrentNode()->getValue()->getResponseTime();
 	}
 }
 
