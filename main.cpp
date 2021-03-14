@@ -6,24 +6,9 @@
 #include <iostream>
 #include "Node.h"
 #include "CircularDoublyLinkedList.h"
+#include "PillowGame.h"
 
 using namespace std;
-
-class PillowGame{
-	CircularDoublyLinkedList *linkedList;
-	int totalNPlayers;
-	int currentTime;
-	int remainingTime;
-	bool forwardDirection;
-	public:
-		PillowGame(int responseTimes[]);
-		void playTill(int time);
-		void endMusic();
-		void reverse();
-		void addPlayer(int responseTime);
-		void printCurrentPlayer();
-		void endGame();
-};
 
 int main(){
 	
